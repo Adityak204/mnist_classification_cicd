@@ -178,5 +178,4 @@ Access your trained models:
 3. **Test Failures**
    - Check if model meets parameter constraints
    - Verify accuracy requirements
-   - Debug model architecture if shape tests fail
-
+   - Debug model architecture if shape tests fails
