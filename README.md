@@ -53,7 +53,7 @@ The model uses several image augmentation techniques to improve robustness and p
    - Helps with occlusion robustness
 
 ## Augmentation Examples
-![Augmentation Examples](./augmentation_comparison.png)
+![Augmentation Examples](doc/individual_augmentations.png)
 
 The image above shows:
 - Original MNIST digit (leftmost)
