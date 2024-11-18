@@ -16,16 +16,16 @@ def train():
     transform = transforms.Compose(
         [
             transforms.RandomAffine(
-                degrees=10,  # Random rotation up to 10 degrees
-                translate=(0.1, 0.1),  # Random translation up to 10%
-                scale=(0.9, 1.1),  # Random scaling between 90% and 110%
+                degrees=5,  # Random rotation up to 10 degrees
+                translate=(0.05, 0.05),  # Random translation up to 10%
+                scale=(0.95, 1.05),  # Random scaling between 90% and 110%
             ),
             transforms.RandomPerspective(
                 distortion_scale=0.2, p=0.5
             ),  # Random perspective
             transforms.ToTensor(),
             transforms.Normalize((0.1307,), (0.3081,)),  # MNIST mean and std
-            transforms.RandomErasing(p=0.2),  # Randomly erase parts of image
+            transforms.RandomErasing(p=0.1),  # Randomly erase parts of image
         ]
     )
 
