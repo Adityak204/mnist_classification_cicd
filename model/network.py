@@ -29,7 +29,7 @@ class SimpleCNN(nn.Module):
         return x
 
 
-if __name__ == "__main__":
-    model = SimpleCNN()
-    print(model)
-    print(sum(p.numel() for p in model.parameters()))
+# if __name__ == "__main__":
+#     model = SimpleCNN()
+#     print(model)
+#     print(sum(p.numel() for p in model.parameters()))
