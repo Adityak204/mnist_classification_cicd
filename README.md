@@ -40,9 +40,9 @@ The model uses several image augmentation techniques to improve robustness and p
 
 ### Augmentation Pipeline
 1. **Random Affine Transforms**:
-   - Rotation: ±10 degrees
-   - Translation: Up to 10% in any direction
-   - Scale: Random scaling between 90% and 110%
+   - Rotation: ±5 degrees
+   - Translation: Up to 5% in any direction
+   - Scale: Random scaling between 95% and 105%
 
 2. **Random Perspective**:
    - Distortion scale: 0.2
@@ -70,7 +70,7 @@ These augmentations help the model:
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.10
 - PyTorch
 - torchvision
 - pytest
