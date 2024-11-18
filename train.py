@@ -8,12 +8,25 @@ import os
 
 
 def train():
-    # Set device
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # Force CPU usage
+    device = torch.device("cpu")
+    print(f"Using device: {device}")
 
-    # Load MNIST dataset
+    # Enhanced data augmentation pipeline
     transform = transforms.Compose(
-        [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
+        [
+            transforms.RandomAffine(
+                degrees=10,  # Random rotation up to 10 degrees
+                translate=(0.1, 0.1),  # Random translation up to 10%
+                scale=(0.9, 1.1),  # Random scaling between 90% and 110%
+            ),
+            transforms.RandomPerspective(
+                distortion_scale=0.2, p=0.5
+            ),  # Random perspective
+            transforms.ToTensor(),
+            transforms.Normalize((0.1307,), (0.3081,)),  # MNIST mean and std
+            transforms.RandomErasing(p=0.2),  # Randomly erase parts of image
+        ]
     )
 
     train_dataset = datasets.MNIST(
@@ -45,7 +58,10 @@ def train():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if not os.path.exists("models"):
         os.makedirs("models")
-    torch.save(model.state_dict(), f"models/model_{timestamp}.pth")
+    torch.save(
+        model.state_dict(),
+        f"models/model_{timestamp}.pth",
+    )
 
 
 if __name__ == "__main__":

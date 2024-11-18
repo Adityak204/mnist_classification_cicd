@@ -19,7 +19,46 @@ def test_input_output_shape():
     assert output.shape == (1, 10), f"Output shape is {output.shape}, should be (1, 10)"
 
 
-def test_model_accuracy():
+def test_model_train_accuracy():
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = SimpleCNN().to(device)
+
+    # Load the latest model
+    import glob
+    import os
+
+    model_files = glob.glob("models/*.pth")
+    latest_model = max(model_files, key=os.path.getctime)
+    model.load_state_dict(torch.load(latest_model))
+
+    # Load train dataset
+    transform = transforms.Compose(
+        [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
+    )
+    train_dataset = datasets.MNIST(
+        "data", train=True, download=True, transform=transform
+    )
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1000)
+
+    model.eval()
+    correct = 0
+    total = 0
+
+    with torch.no_grad():
+        for data, target in train_loader:
+            data, target = data.to(device), target.to(device)
+            outputs = model(data)
+            _, predicted = torch.max(outputs.data, 1)
+            total += target.size(0)
+            correct += (predicted == target).sum().item()
+
+    train_accuracy = 100 * correct / total
+    assert (
+        train_accuracy > 95
+    ), f"Model training accuracy is {train_accuracy}%, should be > 95%"
+
+
+def test_model_test_accuracy():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = SimpleCNN().to(device)
 
@@ -52,5 +91,7 @@ def test_model_accuracy():
             total += target.size(0)
             correct += (predicted == target).sum().item()
 
-    accuracy = 100 * correct / total
-    assert accuracy > 95, f"Model accuracy is {accuracy}%, should be > 95%"
+    test_accuracy = 100 * correct / total
+    assert (
+        test_accuracy > 95
+    ), f"Model test accuracy is {test_accuracy}%, should be > 95%"
