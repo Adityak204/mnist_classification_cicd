@@ -57,8 +57,8 @@ The model uses several image augmentation techniques to improve robustness and p
 
 The image above shows:
 - Original MNIST digit (leftmost)
-- Five different augmented versions showing combined effects
-- Each augmentation preserves digit recognizability while adding variation
+- Output of three different augmented versions - Affine, Perspective & Erasing
+- In the training process all the above augmentations are added sequentially.
 
 These augmentations help the model:
 - Learn invariance to common transformations
