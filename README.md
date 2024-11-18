@@ -104,11 +104,11 @@ The pipeline is triggered automatically on every push to any branch.
 ### Job Steps
 
 1. **Checkout Code**
-   - Uses: `actions/checkout@v2`
+   - Uses: `actions/checkout@v4`
    - Clones the repository into the GitHub Actions runner
 
 2. **Setup Python**
-   - Uses: `actions/setup-python@v2`
+   - Uses: `actions/setup-python@v5`
    - Configures Python 3.8 environment
 
 3. **Install Dependencies**
@@ -130,10 +130,11 @@ The pipeline is triggered automatically on every push to any branch.
      - Model accuracy
 
 6. **Artifact Upload**
-   - Uses: `actions/upload-artifact@v2`
+   - Uses: `actions/upload-artifact@v4`
    - Uploads trained model to GitHub Actions artifacts
    - Artifact name: "trained-model"
    - Path: "models/"
+   - Retention period: 90 days
 
 ### Workflow Status
 You can monitor the workflow status:
