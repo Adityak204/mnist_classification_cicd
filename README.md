@@ -3,7 +3,7 @@
 This repository contains a machine learning project with a complete CI/CD pipeline using GitHub Actions. The project implements a simple Convolutional Neural Network (CNN) for MNIST digit classification with automated testing and deployment.
 
 ## Project Structure
-
+```
 .
 ├── model/
 │ ├── __init__.py
@@ -17,7 +17,7 @@ This repository contains a machine learning project with a complete CI/CD pipeli
 │   └── ml-pipeline.yml # GitHub Actions workflow
 ├── .gitignore # Git ignore rules
 └── README.md # Project documentation
-
+```
 
 ## Model Architecture
 
@@ -151,34 +151,3 @@ The workflow will fail if:
 - Training fails
 - Any test fails (architecture or accuracy)
 - Model file fails to save
-
-## Model Artifacts
-
-The pipeline automatically:
-1. Saves models locally during training
-2. Uploads models to GitHub Actions artifacts
-3. Makes models downloadable from the Actions tab
-4. Preserves model versioning through timestamps
-
-Access your trained models:
-1. Go to Actions tab
-2. Select the workflow run
-3. Download artifacts from the "Artifacts" section
-4. Extract the model file from the downloaded archive
-
-## Troubleshooting Common Pipeline Issues
-
-1. **Workflow Failures**
-   - Check Actions tab for detailed error logs
-   - Verify all dependencies are in requirements.txt
-   - Ensure Python version compatibility
-
-2. **Artifact Upload Issues**
-   - Verify models/ directory exists
-   - Check if model was created during training
-   - Ensure sufficient GitHub storage space
-
-3. **Test Failures**
-   - Check if model meets parameter constraints
-   - Verify accuracy requirements
-   - Debug model architecture if shape tests fails
