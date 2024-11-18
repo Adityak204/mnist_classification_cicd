@@ -1,6 +1,7 @@
 # MNIST Classification Model with CI/CD Pipeline
 
-[![ML Pipeline](https://github.com/adityak204/mnist_classification_cicd/actions/workflows/ml-pipeline.yml/badge.svg)](https://github.com/adityauser/mnist_classification_cicd/actions/workflows/ml-pipeline.yml)
+[![ML Pipeline](https://github.com/adityak204/mnist_classification_cicd/actions/workflows/ml-pipeline.yml/badge.svg)](https://github.com/adityak204/mnist_classification_cicd/actions/workflows/ml-pipeline.yml)
+![Tests](https://github.com/adityak204/mnist_classification_cicd/actions/workflows/ml-pipeline.yml/badge.svg?event=push&label=tests)
 
 This repository contains a machine learning project with a complete CI/CD pipeline using GitHub Actions. The project implements a simple Convolutional Neural Network (CNN) for MNIST digit classification with automated testing and deployment.
 
