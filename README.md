@@ -1,4 +1,4 @@
-# ML Model CI/CD Pipeline
+# MNIST Classification Model with CI/CD Pipeline
 
 This repository contains a machine learning project with a complete CI/CD pipeline using GitHub Actions. The project implements a simple Convolutional Neural Network (CNN) for MNIST digit classification with automated testing and deployment.
 
@@ -6,15 +6,17 @@ This repository contains a machine learning project with a complete CI/CD pipeli
 
 .
 ├── model/
-│ ├── init.py
+│ ├── __init__.py
 │ └── network.py # CNN architecture definition
 ├── tests/
 │ └── test_model.py # Model tests
 ├── train.py # Training script
 ├── requirements.txt # Project dependencies
-└── .github/
-└── workflows/
-└── ml-pipeline.yml # GitHub Actions workflow
+├── .github/
+│ └── workflows/
+│   └── ml-pipeline.yml # GitHub Actions workflow
+├── .gitignore # Git ignore rules
+└── README.md # Project documentation
 
 
 ## Model Architecture
