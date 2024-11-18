@@ -30,7 +30,41 @@ The project implements a lightweight CNN with:
 - Output layer: 64 → 10 units (digit classes)
 - ReLU activations throughout
 
-The model is designed to be lightweight (<100,000 parameters) while achieving >95% accuracy on MNIST.
+The model is designed to be lightweight (<25,000 parameters) while achieving >95% accuracy on MNIST.
+
+## Data Augmentation
+
+The model uses several image augmentation techniques to improve robustness and prevent overfitting:
+
+### Augmentation Pipeline
+1. **Random Affine Transforms**:
+   - Rotation: ±10 degrees
+   - Translation: Up to 10% in any direction
+   - Scale: Random scaling between 90% and 110%
+
+2. **Random Perspective**:
+   - Distortion scale: 0.2
+   - 50% probability of applying
+   - Simulates viewing angle variations
+
+3. **Random Erasing**:
+   - 20% probability of application
+   - Randomly erases parts of the image
+   - Helps with occlusion robustness
+
+## Augmentation Examples
+![Augmentation Examples](./augmentation_comparison.png)
+
+The image above shows:
+- Original MNIST digit (leftmost)
+- Five different augmented versions showing combined effects
+- Each augmentation preserves digit recognizability while adding variation
+
+These augmentations help the model:
+- Learn invariance to common transformations
+- Improve generalization
+- Handle real-world variations in digit appearance
+- Reduce overfitting
 
 ## Requirements
 

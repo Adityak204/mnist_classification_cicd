@@ -2,4 +2,7 @@ data/
 models/
 __pycache__/
 *.pyc
-venv/ 
+venv/
+*.ipynb
+.ipynb_checkpoints/
+visualize_augmentations.py
