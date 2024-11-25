@@ -8,8 +8,8 @@ def test_model_parameters():
     model = SimpleCNN()
     total_params = sum(p.numel() for p in model.parameters())
     assert (
-        total_params < 250000
-    ), f"Model has {total_params} parameters, should be less than 100000"
+        total_params < 25000
+    ), f"Model has {total_params} parameters, should be less than 25000"
 
 
 def test_input_output_shape():
